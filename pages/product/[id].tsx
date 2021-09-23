@@ -1,7 +1,9 @@
 import Product from '../../components/product';
 
 export const getStaticPaths = async () => {
-  const res = await fetch(`http://${process.env.BASE_URL_API}/api/all`);
+  const res = await fetch(
+    `http://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/all`
+  );
   const data = await res.json();
 
   const paths = data.map((product: { id: { toString: () => any } }) => {
@@ -19,7 +21,7 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async (context: { params: { id: any } }) => {
   const id = context.params.id;
   const res = await fetch(
-    `http://${process.env.BASE_URL_API}/api/product/${id}`
+    `http://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/product/${id}`
   );
   const data = await res.json();
 
