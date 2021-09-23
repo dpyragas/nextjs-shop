@@ -9,7 +9,7 @@ export default async function productById(
   const { id } = req.query;
 
   const result = await db.query(
-    'SELECT id,"name",price FROM shop.products WHERE id = $1',
+    'SELECT id,"name", "price","img","gender","desc","category" FROM shop.products WHERE id = $1',
     `${id}`
   );
   res.status(200).json(result);

@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
-import Dropdown from './Dropdown';
+import DropdownMen from './DropdownMen';
+import DropdownWomen from './DropdownWomen';
 
 const Navigation = () => {
   return (
@@ -11,6 +12,8 @@ const Navigation = () => {
             <span className='text-lg pt-1 font-bold'>Phony Hilfiger</span>
           </a>
         </Link>
+        <DropdownWomen />
+        <DropdownMen />
         <a className='text-md font-bold cursor-pointer'>Cart</a>
       </div>
     </header>
