@@ -1,10 +1,8 @@
 import Product from '../../components/product';
-const BASE_URL_API = 'http://localhost:3000';
 
 export const getStaticPaths = async () => {
-  const res = await fetch(`http://localhost:3000/api/all`);
+  const res = await fetch(`${process.env.BASE_URL_API}/api/all`);
   const data = await res.json();
-  console.log(data, 'dataPAges');
 
   const paths = data.map((product: { id: { toString: () => any } }) => {
     return {
@@ -20,7 +18,7 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (context: { params: { id: any } }) => {
   const id = context.params.id;
-  const res = await fetch(`http://localhost:3000/api/product/${id}`);
+  const res = await fetch(`${process.env.BASE_URL_API}/api/product/${id}`);
   const data = await res.json();
 
   return {
