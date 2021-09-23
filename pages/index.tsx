@@ -15,7 +15,7 @@ export default function Home() {
 
   useEffect(() => {
     const fetchProducts = async () => {
-      const res = await (await fetch(`api/all`)).json();
+      const res = await (await fetch(`/api/all`)).json();
       const shuffledRes = shuffle(res);
       setProducts(shuffledRes);
     };

@@ -2,7 +2,7 @@ import ProductList from '../components/ProductList';
 
 export const getStaticPaths = async () => {
   const res = await fetch(
-    `http://${process.env.NEXT_PUBLIC_VERCEL_URL}api/all`
+    `http://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/all`
   );
   const data = await res.json();
 
