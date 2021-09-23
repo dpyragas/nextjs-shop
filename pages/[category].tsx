@@ -24,7 +24,7 @@ export const getStaticProps = async (context: {
   const category = context.params.category;
 
   const res = await fetch(
-    `http://${process.env.NEXT_PUBLIC_VERCEL_URL}api/all/${category}`
+    `http://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/all/${category}`
   );
   const data = await res.json();
 
