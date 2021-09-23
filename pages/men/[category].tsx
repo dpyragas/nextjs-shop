@@ -58,7 +58,7 @@ export default function MenProductsByCategory() {
     const fetchProducts = async () => {
       const res = await (
         await fetch(
-          `http://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/men/all/${category}`
+          `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/men/all/${category}`
         )
       ).json();
 

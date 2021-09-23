@@ -43,10 +43,10 @@ export default function ProductPage() {
     const fetchProduct = async () => {
       const res = await (
         await fetch(
-          `http://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/product/${id}`
+          `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/product/${id}`
         )
       ).json();
-      setProduct(res[0]);
+      await setProduct(res[0]);
       console.log(res);
     };
     fetchProduct();
