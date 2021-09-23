@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { IProduct } from '../models/product';
 
-const Product = ({ product }) => {
+const Product = ({ product }: any) => {
   return (
     <div>
       <a>
