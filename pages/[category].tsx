@@ -1,6 +1,7 @@
 import ProductList from '../components/ProductList';
+import { GetStaticPaths } from 'next';
 
-export const getStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths = async () => {
   const res = await fetch(
     `http://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/all`
   );
