@@ -2,8 +2,6 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/men/[category]": "pages/men/[category].js",
-  "/women/[category]": "pages/women/[category].js",
-  "/api/men/all/[category]": "pages/api/men/all/[category].js",
-  "/api/women/all/[category]": "pages/api/women/all/[category].js"
+  "/product/[id]": "pages/product/[id].js",
+  "/": "pages/index.js"
 }

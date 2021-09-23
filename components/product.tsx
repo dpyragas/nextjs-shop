@@ -58,29 +58,32 @@ const product = ({ product }: any) => {
           <div className='inline-flex items-center flex-wrap'>
             <label>
               <input className='sr-only' type='radio' name='S' value='small' />
-              <div className='p-2 my-3 text-lg block cursor-pointer mr-3 text-white bg-gray-900'>
+              <div className='p-2 my-3 text-lg block cursor-pointer mr-3 text-white bg-gray-900 hover:text-black hover:bg-white hover:border-black border-2'>
                 <span className='px-2'>S</span>
               </div>
             </label>
             <label>
               <input className='sr-only' type='radio' name='S' value='small' />
-              <div className='p-2 my-3 text-lg block cursor-pointer mr-3 text-white bg-gray-900'>
+              <div className='p-2 my-3 text-lg block cursor-pointer mr-3 text-white bg-gray-900 hover:text-black hover:bg-white hover:border-black border-2'>
                 <span className='px-2'>M</span>
               </div>
             </label>
             <label>
               <input className='sr-only' type='radio' name='S' value='small' />
-              <div className='p-2 my-3 text-lg block cursor-pointer mr-3 text-white bg-gray-900'>
+              <div className='p-2 my-3 text-lg block cursor-pointer mr-3 text-white bg-gray-900 hover:text-black hover:bg-white hover:border-black border-2'>
                 <span className='px-2'>L</span>
               </div>
             </label>
             <label>
               <input className='sr-only' type='radio' name='S' value='small' />
-              <div className='p-2 my-3 text-lg block cursor-pointer mr-3 text-white bg-gray-900'>
+              <div className='p-2 my-3 text-lg block cursor-pointer mr-3 text-white bg-gray-900 hover:text-black hover:bg-white hover:border-black border-2'>
                 <span className='px-2'>XL</span>
               </div>
             </label>
           </div>
+          <button className='p-2 my-3 text-lg block cursor-pointer mr-3 text-white bg-gray-900 hover:text-black hover:bg-white hover:border-black border-2'>
+            Add To Cart
+          </button>
         </fieldset>
       </div>
     </div>

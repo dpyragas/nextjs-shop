@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
 import { IProduct } from '../../models/product';
 import ProductList from '../../components/ProductList';
+import { Pagination } from '../../components/Pagination';
 
 export default function Home() {
   const [products, setProducts] = useState<IProduct[]>([]);
+  const [secondSlice, setSecondSlice] = useState(12);
   //Shuffle the products for the main page
   function shuffle(a: any) {
     for (let i = a.length - 1; i > 0; i--) {
@@ -22,10 +24,16 @@ export default function Home() {
 
     fetchProducts();
   }, []);
-
+  const handleLoadMore = () => {
+    setSecondSlice(secondSlice + 12);
+  };
   return (
     <div className='text-3xl'>
-      <ProductList products={products} title='Women Products' />
+      <ProductList
+        products={products.slice(0, secondSlice)}
+        title='Women Products'
+      />
+      <Pagination onClick={handleLoadMore} />
     </div>
   );
 }

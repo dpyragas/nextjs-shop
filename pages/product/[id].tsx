@@ -2,6 +2,8 @@ import Product from '../../components/product';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/dist/client/router';
 import { IProduct } from '../../models/product';
+import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
+import Loader from 'react-loader-spinner';
 // export const getStaticPaths = async () => {
 //   const res = await fetch(
 //     `http://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/all`
@@ -43,7 +45,7 @@ export default function ProductPage() {
     const fetchProduct = async () => {
       const res = await (
         await fetch(
-          `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/product/${id}`
+          `http://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/product/${id}`
         )
       ).json();
       await setProduct(res[0]);
@@ -55,7 +57,19 @@ export default function ProductPage() {
   return (
     <div>
       <main className='px-10 py-6 flex flex-col flex-1'>
-        {product ? <Product product={product} /> : 'Loading...'}
+        {product ? (
+          <Product product={product} />
+        ) : (
+          <div className='flex items-center justify-center'>
+            <Loader
+              type='ThreeDots'
+              color='black'
+              height={100}
+              width={100}
+              timeout={3000} //3 secs
+            />
+          </div>
+        )}
       </main>
     </div>
   );

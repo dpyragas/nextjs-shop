@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import DropdownMen from './DropdownMen';
 import DropdownWomen from './DropdownWomen';
+import DropdownAll from './DropdownAll';
 
 const Navigation = () => {
   return (
@@ -12,8 +13,11 @@ const Navigation = () => {
             <span className='text-lg pt-1 font-bold'>Phony Hilfiger</span>
           </a>
         </Link>
-        <DropdownWomen />
-        <DropdownMen />
+        <div className='flex flex-end'>
+          <DropdownAll />
+          <DropdownWomen />
+          <DropdownMen />
+        </div>
         <a className='text-md font-bold cursor-pointer'>Cart</a>
       </div>
     </header>

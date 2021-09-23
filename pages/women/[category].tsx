@@ -47,9 +47,12 @@ import ProductList from '../../components/ProductList';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/dist/client/router';
 import { IProduct } from '../../models/product';
+import { Pagination } from '../../components/Pagination';
+import Loader from 'react-loader-spinner';
 
 export default function WomenProductsByCategory() {
   const [products, setProducts] = useState<IProduct[]>([]);
+  const [slice, setSlice] = useState(12);
 
   const router = useRouter();
   const { category } = router.query;
@@ -58,7 +61,7 @@ export default function WomenProductsByCategory() {
     const fetchProducts = async () => {
       const res = await (
         await fetch(
-          `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/women/all/${category}`
+          `http://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/women/all/${category}`
         )
       ).json();
 
@@ -67,13 +70,29 @@ export default function WomenProductsByCategory() {
 
     fetchProducts();
   }, [category]);
+  const handleLoadMore = () => {
+    setSlice(slice + 12);
+  };
 
   return (
     <div className='text-3xl'>
-      <ProductList
-        products={products}
-        title={`Women ${category == 'tshirt' ? 'T-Shirt' : category}`}
-      />
+      {products ? (
+        <ProductList
+          products={products.slice(0, slice)}
+          title={`Women ${category == 'tshirt' ? 'T-Shirt' : category}`}
+        />
+      ) : (
+        <div className='flex items-center justify-center'>
+          <Loader
+            type='ThreeDots'
+            color='black'
+            height={100}
+            width={100}
+            timeout={3000} //3 secs
+          />
+        </div>
+      )}
+      <Pagination onClick={handleLoadMore} />
     </div>
   );
 }
