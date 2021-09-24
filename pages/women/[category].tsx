@@ -61,7 +61,7 @@ export default function WomenProductsByCategory() {
     const fetchProducts = async () => {
       const res = await (
         await fetch(
-          `http://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/women/all/${category}`
+          `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/women/all/${category}`
         )
       ).json();
 
