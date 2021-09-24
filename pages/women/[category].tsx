@@ -57,19 +57,29 @@ export default function WomenProductsByCategory() {
   const router = useRouter();
   const { category } = router.query;
 
+  // useEffect(() => {
+  //   const fetchProducts = async () => {
+  //     const res = await (
+  //       await fetch(
+  //         `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/women/all/${category}`
+  //       )
+  //     ).json();
+
+  //     setProducts(res);
+  //   };
+
+  //   fetchProducts();
+  // }, [category]);
+  const fetchProducts = async () => {
+    const res = await await fetch(
+      `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/women/all/${category}`
+    );
+    res.json().then((res) => setProducts(res));
+  };
+
   useEffect(() => {
-    const fetchProducts = async () => {
-      const res = await (
-        await fetch(
-          `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/women/all/${category}`
-        )
-      ).json();
-
-      setProducts(res);
-    };
-
     fetchProducts();
-  }, [category]);
+  }, []);
   const handleLoadMore = () => {
     setSlice(slice + 12);
   };

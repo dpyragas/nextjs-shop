@@ -56,19 +56,30 @@ export default function ProductsByCategory() {
     return a;
   }
 
-  useEffect(() => {
-    const fetchProducts = async () => {
-      const res = await (
-        await fetch(
-          `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/all/${category}`
-        )
-      ).json();
-      const shuffledRes = shuffle(res);
-      setProducts(shuffledRes);
-    };
+  // useEffect(() => {
+  //   const fetchProducts = async () => {
+  //     const res = await (
+  //       await fetch(
+  //         `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/all/${category}`
+  //       )
+  //     ).json();
+  //     const shuffledRes = shuffle(res);
+  //     setProducts(shuffledRes);
+  //   };
 
+  //   fetchProducts();
+  // }, [category]);
+  const fetchProducts = async () => {
+    const res = await await fetch(
+      `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/all/${category}`
+    );
+    res.json().then((res) => setProducts(res));
+  };
+
+  useEffect(() => {
     fetchProducts();
-  }, [category]);
+  }, []);
+
   const handleLoadMore = () => {
     setSecondSlice(secondSlice + 12);
   };
