@@ -79,7 +79,7 @@ export default function WomenProductsByCategory() {
       {products ? (
         <ProductList
           products={products.slice(0, slice)}
-          title={`Women ${category == 'tshirt' ? 'T-Shirt' : category}`}
+          title={`Women ${category}`}
         />
       ) : (
         <div className='flex items-center justify-center'>
