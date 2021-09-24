@@ -70,7 +70,7 @@ export default function MenProductsByCategory() {
     };
 
     fetchProducts();
-  }, []);
+  }, [category]);
 
   const handleLoadMore = () => {
     setSlice(slice + 12);
