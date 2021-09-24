@@ -3,6 +3,7 @@ import Link from 'next/link';
 import DropdownMen from './DropdownMen';
 import DropdownWomen from './DropdownWomen';
 import DropdownAll from './DropdownAll';
+import Cart from './Cart';
 
 const Navigation = () => {
   return (
@@ -18,7 +19,9 @@ const Navigation = () => {
           <DropdownWomen />
           <DropdownMen />
         </div>
-        <a className='text-md font-bold cursor-pointer'>Cart</a>
+        <a className='text-md font-bold cursor-pointer'>
+          <Cart />
+        </a>
       </div>
     </header>
   );
