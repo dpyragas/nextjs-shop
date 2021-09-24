@@ -6,32 +6,31 @@ import { XIcon } from '@heroicons/react/outline';
 const products = [
   {
     id: 1,
-    name: 'Throwback Hip Bag',
+    name: 'Viscose Floral Fit and Flare Dress',
     href: '#',
-    color: 'Salmon',
-    price: '$90.00',
+    color: 'Floral',
+    price: '£120.00',
     quantity: 1,
     imageSrc:
-      'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-01.jpg',
-    imageAlt:
-      'Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt.',
+      'https://tommy-europe.scene7.com/is/image/TommyEurope/DW0DW11268_0GM_main?$main$',
+    imageAlt: 'Viscose Floral Fit and Flare Dress.',
   },
   {
     id: 2,
-    name: 'Medium Stuff Satchel',
+    name: 'Long Sleeve Slim Fit T-Shirt',
     href: '#',
     color: 'Blue',
-    price: '$32.00',
+    price: '£32.00',
     quantity: 1,
     imageSrc:
-      'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-02.jpg',
+      'https://tommy-europe.scene7.com/is/image/TommyEurope/DM0DM10932_BDS_main?$main$',
     imageAlt:
       'Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch.',
   },
   // More products...
 ];
 
-export default function Example() {
+export default function Example({ product }: any) {
   const [open, setOpen] = useState(true);
 
   return (
@@ -136,7 +135,7 @@ export default function Example() {
                   <div className='border-t border-gray-200 py-6 px-4 sm:px-6'>
                     <div className='flex justify-between text-base font-medium text-gray-900'>
                       <p>Subtotal</p>
-                      <p>$262.00</p>
+                      <p>£262.00</p>
                     </div>
                     <p className='mt-0.5 text-sm text-gray-500'>
                       Shipping and taxes calculated at checkout.
