@@ -21,7 +21,7 @@ export default function Home() {
   useEffect(() => {
     const fetchProducts = async () => {
       const res = await (
-        await fetch(`https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/all`)
+        await fetch(`http://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/all`)
       ).json();
       const shuffledRes = shuffle(res);
       setProducts(shuffledRes);

@@ -2,6 +2,15 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
+  "/api/all": "pages/api/all.js",
+  "/men": "pages/men.js",
+  "/women/[category]": "pages/women/[category].js",
+  "/": "pages/index.js",
+  "/api/men/all": "pages/api/men/all.js",
   "/product/[id]": "pages/product/[id].js",
-  "/": "pages/index.js"
+  "/next/dist/pages/_error": "pages/next/dist/pages/_error.js",
+  "/api/men/all/[category]": "pages/api/men/all/[category].js",
+  "/api/product/[id]": "pages/api/product/[id].js",
+  "/[category]": "pages/[category].js",
+  "/api/all/[category]": "pages/api/all/[category].js"
 }

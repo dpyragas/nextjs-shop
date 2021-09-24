@@ -31,6 +31,12 @@ import Image from 'next/image';
 import React from 'react';
 
 const product = ({ product }: any) => {
+  const [productCounter, setProductCounter] = useState(1);
+  const addToCart = () => {
+    localStorage.setItem(`productName[${productCounter}]`, product.name);
+    localStorage.setItem(`productPrice[${productCounter}]`, product.price);
+    localStorage.setItem(`productImg[${productCounter}]`, product.img);
+  };
   return (
     <div className='flex flex-col justify-center items-center space-y-8 md:flex-row md:items-start md:space-y-0 md:space-x-4 lg:space-x-8 max-w-6xl w-11/12 mx-auto'>
       <div className='w-full max-w-md overflow-hidden  md:w-1/2'>
@@ -81,7 +87,10 @@ const product = ({ product }: any) => {
               </div>
             </label>
           </div>
-          <button className='p-2 my-3 text-lg block cursor-pointer mr-3 text-white bg-gray-900 hover:text-black hover:bg-white hover:border-black border-2'>
+          <button
+            onClick={addToCart}
+            className='p-2 my-3 text-lg block cursor-pointer mr-3 text-white bg-gray-900 hover:text-black hover:bg-white hover:border-black border-2'
+          >
             Add To Cart
           </button>
         </fieldset>

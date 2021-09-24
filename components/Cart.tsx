@@ -31,14 +31,14 @@ const products = [
 ];
 
 export default function Example({ product }: any) {
-  const [open, setOpen] = useState(true);
+  const [close, setClosed] = useState(true);
 
   return (
-    <Transition.Root show={open} as={Fragment}>
+    <Transition.Root show={close} as={Fragment}>
       <Dialog
         as='div'
         className='fixed inset-0 overflow-hidden'
-        onClose={setOpen}
+        onClose={setClosed}
       >
         <div className='absolute inset-0 overflow-hidden'>
           <Transition.Child
@@ -74,7 +74,7 @@ export default function Example({ product }: any) {
                         <button
                           type='button'
                           className='-m-2 p-2 text-gray-400 hover:text-gray-500'
-                          onClick={() => setOpen(false)}
+                          onClick={() => setClosed(false)}
                         >
                           <span className='sr-only'>Close panel</span>
                           <XIcon className='h-6 w-6' aria-hidden='true' />
@@ -135,7 +135,7 @@ export default function Example({ product }: any) {
                   <div className='border-t border-gray-200 py-6 px-4 sm:px-6'>
                     <div className='flex justify-between text-base font-medium text-gray-900'>
                       <p>Subtotal</p>
-                      <p>£262.00</p>
+                      <p>£152.00</p>
                     </div>
                     <p className='mt-0.5 text-sm text-gray-500'>
                       Shipping and taxes calculated at checkout.
@@ -154,7 +154,7 @@ export default function Example({ product }: any) {
                         <button
                           type='button'
                           className='text-indigo-600 font-medium hover:text-indigo-500'
-                          onClick={() => setOpen(false)}
+                          onClick={() => setClosed(false)}
                         >
                           Continue Shopping
                           <span aria-hidden='true'> &rarr;</span>

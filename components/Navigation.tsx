@@ -4,9 +4,10 @@ import DropdownMen from './DropdownMen';
 import DropdownWomen from './DropdownWomen';
 import DropdownAll from './DropdownAll';
 import Cart from './Cart';
+import { Dialog, Transition } from '@headlessui/react';
 
 const Navigation = () => {
-  const [cartItems, setCartItems] = useState([]);
+  const [cartOpen, setCartOpen] = useState(false);
   return (
     <header className='border-b sticky top-0 z-20 bg-white'>
       <div className='flex items-center justify-between max-w-6xl pt-4 pb-2 px-4 mx-auto lg:max-w-screen-xl'>
@@ -20,9 +21,16 @@ const Navigation = () => {
           <DropdownWomen />
           <DropdownMen />
         </div>
-        <a className='text-md font-bold cursor-pointer'>
+        <a
+          className='text-md font-bold cursor-pointer'
+          onClick={() => setCartOpen(!cartOpen)}
+        >
           Basket
-          <Cart />
+          {cartOpen ? (
+            <div className='duration-700'>
+              <Cart />
+            </div>
+          ) : null}
         </a>
       </div>
     </header>
