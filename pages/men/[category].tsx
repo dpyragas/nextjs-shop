@@ -80,7 +80,7 @@ export default function MenProductsByCategory() {
 
   useEffect(() => {
     fetchProducts();
-  }, []);
+  }, [category]);
 
   const handleLoadMore = () => {
     setSlice(slice + 12);
@@ -94,15 +94,7 @@ export default function MenProductsByCategory() {
           title={`Men ${category == 'tshirt' ? 'T-Shirt' : category}`}
         />
       ) : (
-        <div className='flex items-center justify-center'>
-          <Loader
-            type='ThreeDots'
-            color='black'
-            height={100}
-            width={100}
-            timeout={3000} //3 secs
-          />
-        </div>
+        fetchProducts()
       )}
       <Pagination onClick={handleLoadMore} />
     </div>
