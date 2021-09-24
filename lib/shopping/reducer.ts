@@ -7,23 +7,25 @@ const shopInitialState = {
 };
 
 function clear() {
-  let shoppings = [];
+  let shoppings: any = [];
   setCookie(CARD, shoppings);
   return shoppings;
 }
 
-function removeShoppingCart(data) {
+function removeShoppingCart(data: any) {
   let shoppings = shopInitialState.shopping;
-  shoppings.filter((item) => item.product.id !== data.product.id);
+  shoppings.filter((item: any) => item.product.id !== data.product.id);
   setCookie(CARD, shoppings);
   return shoppings;
 }
 
-function increment(data) {
+function increment(data: any) {
   let shoppings = shopInitialState.shopping;
-  let isExisted = shoppings.some((item) => item.product.id === data.product.id);
+  let isExisted = shoppings.some(
+    (item: any) => item.product.id === data.product.id
+  );
   if (isExisted) {
-    shoppings.forEach((item) => {
+    shoppings.forEach((item: any) => {
       if (item.product.id === data.product.id) {
         item.quantity += 1;
       }
@@ -34,11 +36,13 @@ function increment(data) {
   return shoppings;
 }
 
-function decrement(data) {
+function decrement(data: any) {
   let shoppings = shopInitialState.shopping;
-  let isExisted = shoppings.some((item) => item.product.id === data.product.id);
+  let isExisted = shoppings.some(
+    (item: any) => item.product.id === data.product.id
+  );
   if (isExisted) {
-    shoppings.forEach((item) => {
+    shoppings.forEach((item: any) => {
       if (item.product.id === data.product.id) {
         item.quantity -= 1;
       }
@@ -53,11 +57,13 @@ function getShopping() {
   return getCookie(CARD);
 }
 
-function addShoppingCart(data) {
+function addShoppingCart(data: any) {
   let shoppings = shopInitialState.shopping;
-  let isExisted = shoppings.some((item) => item.product.id === data.product.id);
+  let isExisted = shoppings.some(
+    (item: any) => item.product.id === data.product.id
+  );
   if (isExisted) {
-    shoppings.forEach((item) => {
+    shoppings.forEach((item: any) => {
       if (item.product.id === data.product.id) {
         item.quantity += 1;
       }
@@ -70,7 +76,7 @@ function addShoppingCart(data) {
   return shoppings;
 }
 
-export default function reducer(state = shopInitialState, action) {
+export default function reducer(state = shopInitialState, action: any) {
   const { type, payload } = action;
 
   switch (type) {
