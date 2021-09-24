@@ -58,29 +58,19 @@ export default function MenProductsByCategory() {
   const router = useRouter();
   const { category } = router.query;
 
-  // useEffect(() => {
-  //   const fetchProducts = async () => {
-  //     const res = await (
-  //       await fetch(
-  //         `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/men/all/${category}`
-  //       )
-  //     ).json();
-
-  //     setProducts(res);
-  //   };
-
-  //   fetchProducts();
-  // }, []);
-  const fetchProducts = async () => {
-    const res = await await fetch(
-      `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/men/all/${category}`
-    );
-    res.json().then((res) => setProducts(res));
-  };
-
   useEffect(() => {
+    const fetchProducts = async () => {
+      const res = await (
+        await fetch(
+          `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/men/all/${category}`
+        )
+      ).json();
+
+      setProducts(res);
+    };
+
     fetchProducts();
-  }, [category]);
+  }, []);
 
   const handleLoadMore = () => {
     setSlice(slice + 12);
@@ -94,7 +84,15 @@ export default function MenProductsByCategory() {
           title={`Men ${category == 'tshirt' ? 'T-Shirt' : category}`}
         />
       ) : (
-        fetchProducts()
+        <div className='flex items-center justify-center'>
+          <Loader
+            type='ThreeDots'
+            color='black'
+            height={100}
+            width={100}
+            timeout={3000} //3 secs
+          />
+        </div>
       )}
       <Pagination onClick={handleLoadMore} />
     </div>
