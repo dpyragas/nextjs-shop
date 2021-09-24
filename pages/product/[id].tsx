@@ -2,6 +2,8 @@ import Product from '../../components/product';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/dist/client/router';
 import { IProduct } from '../../models/product';
+
+import SuggestedProducts from '../../components/SuggestedProducts';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 import Loader from 'react-loader-spinner';
 // export const getStaticPaths = async () => {
@@ -38,21 +40,44 @@ import Loader from 'react-loader-spinner';
 // };
 export default function ProductPage() {
   const [product, setProduct] = useState<IProduct>();
+  const [similarProducts, setSimilarProducts] = useState<IProduct[]>([]);
   // const [loading, setLoading] = useState(true);
   const router = useRouter();
   const { id } = router.query;
+
+  function shuffle(a: any) {
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
+
   useEffect(() => {
     const fetchProduct = async () => {
       const res = await (
         await fetch(
-          `http://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/product/${id}`
+          `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/product/${id}`
         )
       ).json();
       await setProduct(res[0]);
-      console.log(res);
     };
     fetchProduct();
-  }, []);
+  }, [id]);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const res = await (
+        await fetch(
+          `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/${product?.gender}/all/${product?.category}`
+        )
+      ).json();
+      const shuffledRes = shuffle(res);
+      setSimilarProducts(shuffledRes);
+    };
+
+    fetchProducts();
+  }, [product]);
 
   return (
     <div>
@@ -71,6 +96,10 @@ export default function ProductPage() {
           </div>
         )}
       </main>
+      <SuggestedProducts
+        products={similarProducts.slice(0, 4)}
+        title='Suggested Products'
+      />
     </div>
   );
 }

@@ -3,6 +3,7 @@ import { IProduct } from '../models/product';
 import { Pagination } from '../components/Pagination';
 import ProductList from '../components/ProductList';
 import Loader from 'react-loader-spinner';
+import Hero from '../components/Hero';
 
 export default function Home() {
   const [products, setProducts] = useState<IProduct[]>([]);
@@ -32,8 +33,12 @@ export default function Home() {
 
   return (
     <div className='text-3xl'>
+      <Hero />
       {products ? (
-        <ProductList products={products.slice(0, slice)} title='All Products' />
+        <ProductList
+          products={products.slice(0, 8)}
+          title='Featured Products'
+        />
       ) : (
         <div className='flex items-center justify-center'>
           <Loader
@@ -45,7 +50,7 @@ export default function Home() {
           />
         </div>
       )}
-      <Pagination onClick={handleLoadMore} />
+      {/* <Pagination onClick={handleLoadMore} /> */}
     </div>
   );
 }

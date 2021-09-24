@@ -60,7 +60,7 @@ export default function ProductsByCategory() {
     const fetchProducts = async () => {
       const res = await (
         await fetch(
-          `http://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/all/${category}`
+          `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/all/${category}`
         )
       ).json();
       const shuffledRes = shuffle(res);
